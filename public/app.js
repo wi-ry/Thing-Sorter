@@ -1,9 +1,14 @@
-// Example custom items. Replace with your own!
+// Custom items as requested
 const items = [
-  "Item A",
-  "Item B",
-  "Item C",
-  "Item D"
+  "gregory house",
+  "lawrence kutner",
+  "cooper howard",
+  "charlie kelly",
+  "nathan prescott",
+  "revali",
+  "link",
+  "larry",
+  "brock"
 ];
 
 let battles = [];
