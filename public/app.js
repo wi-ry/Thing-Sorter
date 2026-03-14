@@ -54,26 +54,41 @@ function showNextBattle() {
   const [i, j] = battles[progress];
   const row = document.createElement('div');
   row.className = 'battle-row';
+
   const btnA = document.createElement('button');
   btnA.className = 'battle-btn';
   btnA.textContent = items[i];
   btnA.onclick = () => { results[i]++; progress++; showNextBattle(); };
+
+  // Center column for both/no opinion
+  const centerCol = document.createElement('div');
+  centerCol.className = 'battle-center-col';
+  centerCol.style.display = 'flex';
+  centerCol.style.flexDirection = 'column';
+  centerCol.style.alignItems = 'center';
+  centerCol.style.gap = '8px';
+
   const bothBtn = document.createElement('button');
   bothBtn.className = 'battle-btn';
   bothBtn.textContent = 'I Like Both';
   bothBtn.onclick = () => { results[i]++; results[j]++; progress++; showNextBattle(); };
-  const btnB = document.createElement('button');
-  btnB.className = 'battle-btn';
-  btnB.textContent = items[j];
-  btnB.onclick = () => { results[j]++; progress++; showNextBattle(); };
+
   const noOpinionBtn = document.createElement('button');
   noOpinionBtn.className = 'battle-btn';
   noOpinionBtn.textContent = 'No Opinion';
   noOpinionBtn.onclick = () => { progress++; showNextBattle(); };
+
+  centerCol.appendChild(bothBtn);
+  centerCol.appendChild(noOpinionBtn);
+
+  const btnB = document.createElement('button');
+  btnB.className = 'battle-btn';
+  btnB.textContent = items[j];
+  btnB.onclick = () => { results[j]++; progress++; showNextBattle(); };
+
   row.appendChild(btnA);
-  row.appendChild(bothBtn);
+  row.appendChild(centerCol);
   row.appendChild(btnB);
-  row.appendChild(noOpinionBtn);
   battleDiv.appendChild(row);
   progressDiv.textContent = `Battle #${progress + 1} | ${Math.round(100 * progress / battles.length)}% sorted.`;
 }
